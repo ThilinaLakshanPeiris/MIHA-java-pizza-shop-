@@ -16,7 +16,7 @@ public class Beverages {
 
         };
 
-        public void ShowVegPizza(){
+        public void ShowHotDrinks(){
             System.out.println("Hot Drinks Menu");
             System.out.println("------------------");
             int num = 1;
@@ -27,7 +27,7 @@ public class Beverages {
             }
             System.out.println();
         }
-        public void ShowNonVegPizza(){
+        public void ShowCoolDrinks(){
             System.out.println("Non Cool Drinks Menu");
             System.out.println("------------------");
             int num = 1;

@@ -9,7 +9,6 @@ public class Main {
         Beverages drink = new Beverages();
         Cart cart = new Cart();
         Scanner Sc = new Scanner(System.in);
-
 //        pizza.ShowVegPizza();
 //        System.out.println("Enter Pizza Number That You Want To Order :- ");
 //        int Veg_piz_num = Sc.nextInt();
@@ -39,17 +38,26 @@ public class Main {
                     );
                     int PizzaType = Sc.nextInt();
                     if(PizzaType == 1){
-                        pizza.ShowVegPizza();
-                        System.out.print("Enter Pizza Number That You Want To Order :- ");
-                        int Veg_pizza_num = Sc.nextInt();
-                        pizza.addVegPizzaToCart(Veg_pizza_num);
-
+                        try {
+                            pizza.ShowVegPizza();
+                            System.out.print("Enter Pizza Number That You Want To Order :- ");
+                            int Veg_pizza_num = Sc.nextInt();
+                            pizza.addVegPizzaToCart(Veg_pizza_num);
+                        }catch (Exception e){
+                            System.out.println("Please Enter Valid Veg Pizza Number !..");
+                            break;
+                        }
                     }
                     else if (PizzaType == 2) {
-                        pizza.ShowNonVegPizza();
-                        System.out.print("Enter Pizza Number That You Want To Order :- ");
-                        int Non_Veg_pizza_num = Sc.nextInt();
-                        pizza.addNonVegPizzaToCart(Non_Veg_pizza_num);
+                        try {
+                            pizza.ShowNonVegPizza();
+                            System.out.print("Enter Pizza Number That You Want To Order :- ");
+                            int Non_Veg_pizza_num = Sc.nextInt();
+                            pizza.addNonVegPizzaToCart(Non_Veg_pizza_num);
+                        }catch (Exception e){
+                            System.out.println("Please Enter Valid Non Veg Pizza Number !..");
+                            break;
+                        }
                     }
                     else if (PizzaType == 0) {
                         break;
@@ -73,7 +81,19 @@ public class Main {
                             cart.showCart();
                         }
                         else if (choice == 3) {
-                            cart.PlaceOrder();
+                            System.out.println("Do you want to Buy More Pizza or Beverages.\n " +
+                                                "press 1 to buy More\n " +
+                                                "press 0 to Continue Payment");
+                            int lastInput = Sc.nextInt();
+                            if(lastInput == 1){
+                                break;
+                            } else if (lastInput == 0) {
+                                cart.PlaceOrder();
+                            }else {
+                                System.out.println("please enter valid input...");
+
+                            }
+
                         }
                     }
 
@@ -81,12 +101,10 @@ public class Main {
             }
             else if (FoodType == 2) {
 
-
-                int DrinkType = Sc.nextInt();
-                boolean pizzaRun = true;
-                boolean pizzaOk = true;
-                while (pizzaRun ){
-                    System.out.print("""
+                boolean DrinkRun = true;
+                boolean DrinkOk = true;
+                while (DrinkRun ){
+                    System.out.println("""
                             Cool Drinks or Hot Drinks :\s
                             Enter 1 For Hot Drinks
                             Enter 2 For Cool Drinks
@@ -95,17 +113,26 @@ public class Main {
 
                     int DrinkType = Sc.nextInt();
                     if(DrinkType == 1){
-                        pizza.ShowVegPizza();
-                        System.out.print("Enter Pizza Number That You Want To Order :- ");
-                        int Veg_pizza_num = Sc.nextInt();
-                        pizza.addVegPizzaToCart(Veg_pizza_num);
-
+                        try {
+                            drink.ShowHotDrinks();
+                            System.out.print("Enter Drink Number That You Want To Order :- ");
+                            int Hot_Drink_num = Sc.nextInt();
+                            drink.addHotDrinksToCart(Hot_Drink_num);
+                        }catch (Exception e){
+                            System.out.println("Please Enter Valid Hot Drink Number !..");
+                            break;
+                        }
                     }
                     else if (DrinkType == 2) {
-                        pizza.ShowNonVegPizza();
-                        System.out.print("Enter Pizza Number That You Want To Order :- ");
-                        int Non_Veg_pizza_num = Sc.nextInt();
-                        pizza.addNonVegPizzaToCart(Non_Veg_pizza_num);
+                        try {
+                            drink.ShowCoolDrinks();
+                            System.out.print("Enter Drink Number That You Want To Order :- ");
+                            int Cool_Drink_num = Sc.nextInt();
+                            drink.addCoolDrinksToCart(Cool_Drink_num);
+                        }catch (Exception e){
+                            System.out.println("Please Enter Valid Cool Drink Number !..");
+                            break;
+                        }
                     }
                     else if (DrinkType == 0) {
                         break;
@@ -114,22 +141,33 @@ public class Main {
                         System.out.println("Please Enter Valid Input");
                     }
 
-                    while (pizzaOk){
-                        System.out.println("Press To add More Pizza :- 1 \n" +
+                    while (DrinkOk){
+                        System.out.println("Press To add More Drink :- 1 \n" +
                                 "Press To see The Cart :- 2 \n" +
                                 "Press To Buy :- 3 \n" +
                                 "Press To Main Menu :- 0");
 
                         int choice = Sc.nextInt();
                         if (choice == 0 ){
-                            pizzaOk = false;
+                            DrinkOk = false;
                         } else if (choice == 1 ) {
                             break;
                         } else if (choice == 2) {
                             cart.showCart();
                         }
                         else if (choice == 3) {
-                            cart.PlaceOrder();
+                            System.out.println("Do you want to Buy More Pizza or Beverages.\n " +
+                                    "press 1 to buy More\n " +
+                                    "press 0 to Continue Payment");
+                            int lastInput = Sc.nextInt();
+                            if(lastInput == 1){
+                                break;
+                            } else if (lastInput == 0) {
+                                cart.PlaceOrder();
+                            }else {
+                                System.out.println("please enter valid input...");
+
+                            }
                         }
                     }
 
@@ -143,11 +181,5 @@ public class Main {
                 System.out.println("Please Enter Valid Input...");
             }
         }
-
-        System.out.print("Order Type : \n" +
-                "Enter 1 For Delivery Orders\n" +
-                "Enter 2 For Pick-Up Orders");
-        int OrderType = Sc.nextInt();
-
     }
 }
